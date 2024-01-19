@@ -1,0 +1,16 @@
+---
+- name: Search for "Disk Size" in the variable
+  set_fact:
+    disk_size: "{{ disk }}"
+
+- name: partition new disk
+  shell: echo -e "n\n\n\n\nt\n\n31\nw" | sudo fdisk /dev/sda
+  args:
+    executable: /bin/bash
+  when: disk_size | int > 70
+
+- name: extend new disk
+  shell: "vgextend rootvg /dev/sda4"
+  args:
+    executable: /bin/bash
+  when: disk_size | int > 70

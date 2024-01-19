@@ -1,0 +1,6 @@
+---
+- name: Volume Group
+  hosts: linux
+  become: true
+  roles:
+    - role: sda4
