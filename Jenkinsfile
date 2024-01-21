@@ -31,7 +31,7 @@ pipeline {
                 ]){
                 container('ansible') {
                     script {
-                        sh 'ansible-playbook -i Modulos/hosts Modulos/sda4.yaml -e "root_password=${root_passwd}" -vv'
+                        sh 'ansible-playbook -i Modulos/hosts Modulos/sda4.yaml -e "root_password=${root_passwd}"'
                     }
                 }
                 }
